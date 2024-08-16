@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>CoffeeScript WebGL ARP Signing Avatar: vhg.2024</title>
+
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta http-equiv="Access-Control-Allow-Methods" content="GET">
+
+<!-- CWA @ vhg.cmp.uea.ac.uk/tech/jas/vhg2024 -->
+
+<link rel="stylesheet"
+    href="https://vhg.cmp.uea.ac.uk/tech/jas/vhg2024/cwa/cwasa.css" />
+<script type="text/javascript"
+    src="https://vhg.cmp.uea.ac.uk/tech/jas/vhg2024/cwa/allcsa.js"></script>
+
+<script type="text/javascript">
+  let sigml = `
+||sigml||
+`
+
+  let cfg = {
+      useClientConfig: true,
+      avSettings: {
+          initAv: 'luna',
+          allowSiGMLText: true
+      }
+  };
+
+  function init () {
+      CWASA.init(cfg);
+      CWASA.ready.then( () => {
+        console.log("CWASA is ready");
+      });
+
+      CWASA.addHook("avatarready", function() {
+        console.log("Avatar is ready");
+         CWASA.playSiGMLText(sigml)
+        //CWASA.playSiGMLURL('https://vhg.cmp.uea.ac.uk/tech/jas/vhg2024/sigml/blenderStory.sigml')
+      });
+
+      myLogger = CWASA.getLogger("myLog", "debug");
+
+      if (typeof (myLogger.trace) === "function") { myLogger.trace("My Message"); }
+  }
+</script>
+
+</head>
+
+<body onload="init()">
+   <div class="CWASAAvatar av0" align="center" ></div>
+</body>
+
+</html>
